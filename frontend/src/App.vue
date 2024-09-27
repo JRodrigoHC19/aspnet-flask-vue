@@ -14,7 +14,7 @@ const searchCats = async () => {
 
   try {
     // Usar la IP ingresada manualmente
-    const response = await axios.get(`http://${ipAddress.value}:8080/?query=${searchQuery.value}`)
+    const response = await axios.get(`http://${ipAddress.value}:8082/?query=${searchQuery.value}`)
     cats.value = response.data
     console.log(typeof response.data, response.data)
   } catch (error) {
