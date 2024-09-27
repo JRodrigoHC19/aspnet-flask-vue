@@ -9,7 +9,8 @@
   const searchCats = async () => {
     try {
       const response = await axios.get(`http://aspnet:8080/?query=${searchQuery.value}`)
-      cats.value = response.data  // No es necesario JSON.parse, axios ya parsea automáticamente
+      cats.value = response.data
+      console.log( typeof response.data, response.data)
     } catch (error) {
       console.error('Error al consumir el API:', error)
     }
