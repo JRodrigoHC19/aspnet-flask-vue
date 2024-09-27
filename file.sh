@@ -10,27 +10,28 @@ BUILD_NAME_FRONT="img-vue"
 
 
 # GitHub
-git clone https://github.com/JRodrigoHC19/api-service-dotnet.git
-cd api-service-dotnet
+git clone https://github.com/JRodrigoHC19/aspnet-flask-vue.git
+cd aspnet-flask-vue
 
 
 # Steps
-cd ../api-flask
+cd backend/api-flask
 
 docker build -t $BUILD_NAME_BACK_F .
-docker run -it -d --rm -p 8081:5000 --name $ID_BACK_F $BUILD_NAME_BACK_F run
+docker run -it -d --rm -p 8081:5000 --name $ID_BACK_F $BUILD_NAME_BACK_F bash
 
 
-cd ./backend/api-csharp
+
+cd ../api-csharp
 
 docker build -t $BUILD_NAME_BACK_C .
-docker run -it -d --rm -p 8082:8080 --name $ID_BACK_C $BUILD_NAME_BACK_C run
+docker run -it -d --rm -p 8082:8080 --name $ID_BACK_C $BUILD_NAME_BACK_C bash
 
 
 cd ../../frontend
 
 docker build -t "$BUILD_NAME_FRONT" .
-docker run -it -d --rm -p 8083:8080 --name $ID_FRONT --link $ID_BACK:aspnet $BUILD_NAME_FRONT
+docker run -it -d --rm -p 8083:8080 --name $ID_FRONT --link $ID_BACK_C:aspnet $BUILD_NAME_FRONT
 
 
 

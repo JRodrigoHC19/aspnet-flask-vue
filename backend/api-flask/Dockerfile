@@ -1,8 +1,8 @@
-FROM python:alpine
+FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 COPY cats.csv .
 COPY app.py .
 COPY dependences.py .
