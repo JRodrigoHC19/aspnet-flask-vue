@@ -1,6 +1,7 @@
 #!bin/bash
 
 # Variables
+IP_ADDRESS=$1
 ID_BACK_C="service-csharp"
 ID_BACK_F="service-flask"
 ID_FRONT="service-vue"
@@ -31,7 +32,7 @@ docker run -it -d --rm -p 8082:8080 --name $ID_BACK_C --link $ID_BACK_F:flask $B
 cd ../../frontend
 
 docker build -t "$BUILD_NAME_FRONT" .
-docker run -it -d --rm -p 8083:8080 --name $ID_FRONT --link $ID_BACK_C:aspnet $BUILD_NAME_FRONT
+docker run -it -d --rm -p 8083:8080 --name -c $ID_FRONT -e IP_ADDRESS=$IP_ADDRESS $BUILD_NAME_FRONT
 
 
 # sleep 30
